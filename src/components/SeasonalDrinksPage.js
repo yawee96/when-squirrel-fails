@@ -62,122 +62,122 @@ function SeasonalDrinksPage(props) {
       <Grid className={classes.gridContainer} container spacing={2} justify="space-around">
         {/* <div onClick={() => demoMethod("clicked from coffee page!")}>Hello from Coffee Page</div> */}
         <Grid item xs={2}>
-          <Button fullWidth className={classes.chai} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Holiday Chai", price: 3.99 })}>
+          <Button fullWidth className={classes.chai} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Holiday Chai", price: 3.99, type: "drink" })}>
             12oz Holi Chai
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.chai} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Holiday Chai", price: 4.99 })}>
+          <Button fullWidth className={classes.chai} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Holiday Chai", price: 4.99, type: "drink" })}>
             16oz Holi Chai
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.chai} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Holiday Chai", price: 5.51 })}>
+          <Button fullWidth className={classes.chai} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Holiday Chai", price: 5.51, type: "drink" })}>
             20oz Holi Chai
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.mellow} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Mellow Hot Choco", price: 3.99 })}>
+          <Button fullWidth className={classes.mellow} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Mellow Hot Choco", price: 3.99, type: "drink" })}>
             12oz Mellow Choco
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.mellow} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Mellow Hot Choco", price: 4.99 })}>
+          <Button fullWidth className={classes.mellow} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Mellow Hot Choco", price: 4.99, type: "drink" })}>
             16oz Mellow Choco
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.mellow} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Mellow Hot Choco", price: 5.51 })}>
+          <Button fullWidth className={classes.mellow} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Mellow Hot Choco", price: 5.51, type: "drink" })}>
             20oz Mellow Choco
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.apple} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Apple Cider", price: 3.41 })}>
+          <Button fullWidth className={classes.apple} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Apple Cider", price: 3.41, type: "drink" })}>
             12oz Apple Cider
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.apple} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Apple Cider", price: 3.68 })}>
+          <Button fullWidth className={classes.apple} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Apple Cider", price: 3.68, type: "drink" })}>
             16oz Apple Cider
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.apple} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Apple Cider", price: 4.04 })}>
+          <Button fullWidth className={classes.apple} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Apple Cider", price: 4.04, type: "drink" })}>
             20oz Apple Cider
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.merry} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Merry M. Latte", price: 4.73 })}>
+          <Button fullWidth className={classes.merry} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Merry M. Latte", price: 4.73, type: "drink" })}>
             12oz Merry M. Latte
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.merry} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Merry M. Latte", price: 5.51 })}>
+          <Button fullWidth className={classes.merry} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Merry M. Latte", price: 5.51, type: "drink" })}>
             16oz Merry M. Latte
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.merry} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Merry M. Latte", price: 5.78 })}>
+          <Button fullWidth className={classes.merry} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Merry M. Latte", price: 5.78, type: "drink" })}>
             20oz Merry M. Latte
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.mint} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Mint Hot Chocolate", price: 4.73 })}>
+          <Button fullWidth className={classes.mint} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Mint Hot Chocolate", price: 4.73, type: "drink" })}>
             12oz Mint Choco
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.mint} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Mint Hot Chocolate", price: 5.78 })}>
+          <Button fullWidth className={classes.mint} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Mint Hot Chocolate", price: 5.78, type: "drink" })}>
             16oz Mint Choco
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.mint} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Mint Hot Chocolate", price: 6.25 })}>
+          <Button fullWidth className={classes.mint} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Mint Hot Chocolate", price: 6.25, type: "drink" })}>
             20oz Mint Choco
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.ginger} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Gingerbread Latte", price: 4.73 })}>
+          <Button fullWidth className={classes.ginger} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Gingerbread Latte", price: 4.73, type: "drink" })}>
             12oz Ginger Latte
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.ginger} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Gingerbread Latte", price: 5.78 })}>
+          <Button fullWidth className={classes.ginger} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Gingerbread Latte", price: 5.78, type: "drink" })}>
             16oz Ginger Latte
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.ginger} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Gingerbread Latte", price: 6.25 })}>
+          <Button fullWidth className={classes.ginger} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Gingerbread Latte", price: 6.25, type: "drink" })}>
             20oz Ginger Latte
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.mintMocha} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Mint Mocha", price: 5.51 })}>
+          <Button fullWidth className={classes.mintMocha} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Mint Mocha", price: 5.51, type: "drink" })}>
             12oz Mint Mocha
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.mintMocha} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Mint Mocha", price: 6.25 })}>
+          <Button fullWidth className={classes.mintMocha} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Mint Mocha", price: 6.25, type: "drink" })}>
             16oz Mint Mocha
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.mintMocha} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Mint Mocha", price: 6.56 })}>
+          <Button fullWidth className={classes.mintMocha} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Mint Mocha", price: 6.56, type: "drink" })}>
             20oz Mint Mocha
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.pumpkin} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Pumpkin Latte", price: 4.46 })}>
+          <Button fullWidth className={classes.pumpkin} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Pumpkin Latte", price: 4.46, type: "drink" })}>
             12oz Pumpkin Latte
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.pumpkin} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Pumpkin Latte", price: 5.25 })}>
+          <Button fullWidth className={classes.pumpkin} variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Pumpkin Latte", price: 5.25, type: "drink" })}>
             16oz Pumpkin Latte
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.pumpkin} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Pumpkin Latte", price: 5.78 })}>
+          <Button fullWidth className={classes.pumpkin} variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Pumpkin Latte", price: 5.78, type: "drink" })}>
             20oz Pumpkin Latte
           </Button>
         </Grid>

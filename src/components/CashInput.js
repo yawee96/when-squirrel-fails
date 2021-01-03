@@ -67,6 +67,8 @@ function CashInput(props) {
                 onChange={handleCashInputFormChange}
                 startAdornment={<InputAdornment position="start">$</InputAdornment>}
                 labelWidth={60}
+                autoComplete="off"
+                type="number"
               />
             </Grid>
             <Grid item >

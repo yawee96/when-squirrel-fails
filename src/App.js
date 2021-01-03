@@ -80,11 +80,18 @@ function App() {
     return roundedTotal.toFixed(2);
   }
 
-
+  //GET TOTAL ================================
   useEffect(() => {
     let total = 0;
     check.forEach((item) => {
-      total += item.price;
+      let addOnTotal = 0;
+      if("addOns" in item){
+        item.addOns.forEach((addOn) => {
+          addOnTotal += addOn.price;
+        })
+      }
+      let itemPriceWithAddOnsPrice = item.price + addOnTotal;
+      total += itemPriceWithAddOnsPrice;
     })
     const roundedTotal = roundTotal(total)
     setTotal(roundedTotal);
@@ -102,6 +109,25 @@ function App() {
     tempCheck.splice(index, 1);
     console.log("Spliced in remove: ", tempCheck);
     setCheck(tempCheck);
+  }
+
+  const editItem = (index, addOn) => {
+    console.log("Index in edit: ", index);
+    console.log("Add On in edit: ", addOn)
+    let tempCheck = [...check];
+    let itemToEdit = tempCheck[index];
+    console.log("item to edit: ", itemToEdit);
+    if("addOns" in itemToEdit){
+      itemToEdit.addOns.push(addOn);
+      tempCheck[index] = itemToEdit;
+      setCheck(tempCheck);
+    } else {
+      itemToEdit.addOns = [];
+      itemToEdit.addOns.push(addOn);
+      console.log("item to edit with add on: ", itemToEdit);
+      tempCheck[index] = itemToEdit;
+      setCheck(tempCheck);
+    }
   }
 
   const clearAll = () => {
@@ -140,7 +166,7 @@ function App() {
       <Container className={classes.container}>
         <Grid container spacing={2}>
           <Grid item xs={3}>
-            <Check check={check} removeItem={removeItem}/>
+            <Check check={check} removeItem={removeItem} editItem={editItem}/>
           </Grid>
           <Grid item xs={9}>
             <Pages sendItemToApp={addItemToCheck} sendTestDataToApp={getTestData} />
