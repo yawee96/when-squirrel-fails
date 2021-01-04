@@ -91,17 +91,17 @@ function CoffeePage(props) {
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.latte} variant="contained" onClick={() => sendItemToAppHandler({ name: "12oz Latte", price: 2.63, type: "drink"})}>
+          <Button fullWidth className={classes.latte} variant="contained" onClick={() => sendItemToAppHandler({ name: "12oz Latte", price: 3.85, type: "drink"})}>
             12oz Latte
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.latte} variant="contained" onClick={() => sendItemToAppHandler({ name: "16oz Latte", price: 2.63, type: "drink" })}>
+          <Button fullWidth className={classes.latte} variant="contained" onClick={() => sendItemToAppHandler({ name: "16oz Latte", price: 4.75, type: "drink" })}>
             16oz Latte
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.latte} variant="contained" onClick={() => sendItemToAppHandler({ name: "20oz Latte", price: 2.63, type: "drink" })}>
+          <Button fullWidth className={classes.latte} variant="contained" onClick={() => sendItemToAppHandler({ name: "20oz Latte", price: 4.95, type: "drink" })}>
             20oz Latte
           </Button>
         </Grid>
