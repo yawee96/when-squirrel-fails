@@ -9,7 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 const useStyles = makeStyles({
   paper: {
-    height: "70vh",
+    height: "69vh",
     overflowX: "hidden"
   }
 })
@@ -132,6 +132,7 @@ function Check(props) {
                   <div>
                     <ListItem key={index}>
                       <ListItemText
+                        key={index}
                         primary={item.name}
                         secondary={item.price.toFixed(2)}
                       />
