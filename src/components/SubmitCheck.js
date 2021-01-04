@@ -6,6 +6,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+const firebase = require('firebase');
+
 function SubmitCheck(props) {
 
   //check is an array with items
@@ -39,7 +41,15 @@ function SubmitCheck(props) {
     setOpen(false);
   };
 
+  const sendCheckToFirebase = (check) => {
+    firebase
+      .firestore()
+      .collection()
+  }
+
   const submitCheckHandler = () => {
+    // ===================================================================== SEND CHECK (NOT CHECKS) TO FIREBASE ======================================================================
+    sendCheckToFirebase(check);
     setChecks([...checks, check]);
     setTotals([...totals, total]);
     clearAll();
