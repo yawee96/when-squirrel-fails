@@ -5,6 +5,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import emailjs from "emailjs-com";
 
 function SubmitCheck(props) {
 
@@ -45,6 +46,21 @@ function SubmitCheck(props) {
     clearAll();
   }
 
+  const sendEmail = (checksFromLocalStorage) => {
+    let templateParams = {
+      from_name: 'Kipp',
+      to_name: 'Kipp',
+      message: JSON.stringify(checksFromLocalStorage)
+    };
+
+    emailjs.send('service_obuvk2y', 'template_8qcyoym', templateParams, "user_PjxKzcJFOT2gUwjauCjsW")
+      .then(function (response) {
+        console.log('SUCCESS!', response.status, response.text);
+      }, function (error) {
+        console.log('FAILED...', error);
+      });
+  }
+
   const showTotalSalesUsingCheck = () => {
     const checksFromLocalStorage = JSON.parse(localStorage.getItem("checks"));
     console.log(checksFromLocalStorage); //checksFromLocalStorage is an array of arrays
@@ -54,6 +70,7 @@ function SubmitCheck(props) {
         totalSales += item.price
       })
     })
+    sendEmail(checksFromLocalStorage);
     console.log("Using Checks", totalSales.toFixed(2));
   }
 
