@@ -5,6 +5,24 @@ import './index.css';
 import Routes from "./Routes";
 import reportWebVitals from './reportWebVitals';
 
+
+import firebase from "firebase/app"
+require('firebase/firestore');
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDOag9-fh0Rky0NdiWyjPR1jeLe2YLgjpE",
+  authDomain: "bluechip-pos.firebaseapp.com",
+  projectId: "bluechip-pos",
+  storageBucket: "bluechip-pos.appspot.com",
+  messagingSenderId: "454116305507",
+  appId: "1:454116305507:web:127fe684327c010106a656",
+  measurementId: "G-C1F34J1NES"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
+
 ReactDOM.render(
   <React.StrictMode>
     <Routes />

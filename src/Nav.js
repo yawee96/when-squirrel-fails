@@ -32,6 +32,9 @@ function Nav(props) {
           <Link style={navLinkStyle} to="/bagel">
           <li>Bagel Station</li>
           </Link>
+          <Link style={navLinkStyle} to="/view-checks">
+          <li>View Checks</li>
+          </Link>
         </ul>
 
         {/* <ul>

@@ -217,7 +217,6 @@ function App() {
             Enter password to start a new day
           </DialogContentText>
           <TextField
-            autoFocus
             margin="dense"
             id="password"
             label="Password"

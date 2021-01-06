@@ -7,6 +7,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import emailjs from "emailjs-com";
 
+import firebase from "firebase/app";
+
 function SubmitCheck(props) {
 
   //check is an array with items
@@ -40,7 +42,144 @@ function SubmitCheck(props) {
     setOpen(false);
   };
 
+  const filterBarStationItemsAndSendToFirebase = (check) => {
+    console.log("FILTER BAR STATION ", check);
+    /*check is an array of objects {
+      name: string
+      type: string
+      addOns: [
+        {
+          name: string
+        }
+      ]
+    }
+    */
+
+    let items = [];
+    check.forEach(item => {
+      //check if the item type is 'drink' and add it to an array
+      if (item.type === "drink") {
+        let editedAddOns = []
+        if ('addOns' in item) {
+          item.addOns.forEach(addOn => {
+            editedAddOns.push(addOn.name);
+          });
+        }
+        if (editedAddOns.length === 0) {
+          let editedItem = {
+            name: item.name
+          }
+          items.push(editedItem)
+        } else {
+          let editedItem = {
+            name: item.name,
+            addOns: editedAddOns
+          }
+          items.push(editedItem);
+        }
+      }
+    })
+
+    console.log("ITEMS IN FILTER BAR STATION: ", items);
+
+    if (items.length > 0) {
+      firebase
+        .firestore()
+        .collection('bar-station')
+        .doc()
+        .set({
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          isActive: true,
+          items: items
+        })
+    }
+
+    // firebase
+    //   .firestore()
+    //   .collection('bar-station')
+    //   .doc()
+    //   .update({
+    //     isActive: true,
+    //     items: [
+    //       {
+    //         name: "12oz Latte",
+    //         addOns: ["Vanilla", "Ice"]
+    //     },
+    //     {
+    //       name: "16oz Latte"
+    //     }
+
+    //     ]
+    //   })
+
+  }
+
+  const filterBagelStationItemsAndSendToFirebase = (check) => {
+    /*check is an array of objects {
+      name: string
+      type: string
+      addOns: [
+        {
+          name: string
+        }
+      ]
+    }
+    */
+
+    console.log("FILTER BAGEL STATION ", check);
+
+    let items = [];
+    check.forEach(item => {
+      //check if the item type is 'bagel', 'sandwich', 'wrap', 'bagelButterCombo', 'bagelCreamCombo', or 'wrapCombo' and add it to an array
+      if (item.type === "bagel" || item.type === "sandwich" || item.type === "wrap" || item.type === "bagelButterCombo" || item.type === "bagelCreamCombo" || item.type === "wrapCombo") {
+        if(item.type === "sandwich" && !("addOns" in item)){
+          return;
+        }
+
+        let editedAddOns = []
+        if ('addOns' in item) {
+          item.addOns.forEach(addOn => {
+            editedAddOns.push(addOn.name);
+          });
+        }
+        if (editedAddOns.length === 0) {
+          let editedItem = {
+            name: item.name
+          }
+          items.push(editedItem)
+        } else {
+          let editedItem = {
+            name: item.name,
+            addOns: editedAddOns
+          }
+          items.push(editedItem);
+        }
+      }
+    })
+
+    if (items.length > 0) {
+      firebase
+        .firestore()
+        .collection('bagel-station')
+        .doc()
+        .set({
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          isActive: true,
+          items: items
+        })
+    }
+
+    //if(items.length === 0) don't do anything
+  }
+
+  const sendCheckToFirebase = (check) => {
+    filterBarStationItemsAndSendToFirebase(check);
+    filterBagelStationItemsAndSendToFirebase(check);
+  }
+
   const submitCheckHandler = () => {
+    // ===================================================================== SEND CHECK (NOT CHECKS) TO FIREBASE ======================================================================
+    sendCheckToFirebase(check);
     setChecks([...checks, check]);
     setTotals([...totals, total]);
     clearAll();
@@ -133,7 +272,6 @@ function SubmitCheck(props) {
         <DialogTitle id="form-dialog-title">Enter Password</DialogTitle>
         <DialogContent>
           <TextField
-            autoFocus
             margin="dense"
             id="password"
             label="Password"

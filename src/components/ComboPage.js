@@ -75,32 +75,32 @@ function ComboPage(props) {
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.bagelCC} variant="contained" onClick={() => sendItemToAppHandler({ name: "12oz C. Bagel w/ CC", price: 5.93, type: "bagelCreamCombo" })}>
+          <Button fullWidth className={classes.bagelCC} variant="contained" onClick={() => sendItemToAppHandler({ name: "12oz Coffee Bagel w/ CC", price: 5.93, type: "bagelCreamCombo" })}>
             12oz C. Bagel w/ CC
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.bagelCC} variant="contained" onClick={() => sendItemToAppHandler({ name: "16oz C. Bagel w/ CC", price: 6.25, type: "bagelCreamCombo" })}>
+          <Button fullWidth className={classes.bagelCC} variant="contained" onClick={() => sendItemToAppHandler({ name: "16oz Coffee Bagel w/ CC", price: 6.25, type: "bagelCreamCombo" })}>
             16oz C. Bagel w/ CC
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.bagelCC} variant="contained" onClick={() => sendItemToAppHandler({ name: "20oz C. Bagel w/ CC", price: 6.41, type: "bagelCreamCombo" })}>
+          <Button fullWidth className={classes.bagelCC} variant="contained" onClick={() => sendItemToAppHandler({ name: "20oz Coffee Bagel w/ CC", price: 6.41, type: "bagelCreamCombo" })}>
             20oz C. Bagel w/ CC
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.bagelWrap} variant="contained" onClick={() => sendItemToAppHandler({ name: "12oz Coffee w/ Wrap", price: 6.29, type: "bagelWrapCombo" })}>
+          <Button fullWidth className={classes.bagelWrap} variant="contained" onClick={() => sendItemToAppHandler({ name: "12oz Coffee w/ Wrap", price: 6.29, type: "wrapCombo" })}>
             12oz Coffee w/ Wrap
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.bagelWrap} variant="contained" onClick={() => sendItemToAppHandler({ name: "16oz Coffee w/ Wrap", price: 6.60, type: "bagelWrapCombo" })}>
+          <Button fullWidth className={classes.bagelWrap} variant="contained" onClick={() => sendItemToAppHandler({ name: "16oz Coffee w/ Wrap", price: 6.60, type: "wrapCombo" })}>
             16oz Coffee w/ Wrap
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth className={classes.bagelWrap} variant="contained" onClick={() => sendItemToAppHandler({ name: "20oz Coffee w/ Wrap", price: 6.76, type: "bagelWrapCombo" })}>
+          <Button fullWidth className={classes.bagelWrap} variant="contained" onClick={() => sendItemToAppHandler({ name: "20oz Coffee w/ Wrap", price: 6.76, type: "wrapCombo" })}>
             20oz Coffee w/ Wrap
           </Button>
         </Grid>
