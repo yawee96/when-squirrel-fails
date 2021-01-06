@@ -130,8 +130,43 @@ function SubmitCheck(props) {
     let items = [];
     check.forEach(item => {
       //check if the item type is 'bagel', 'sandwich', 'wrap', 'bagelButterCombo', 'bagelCreamCombo', or 'wrapCombo' and add it to an array
+      if (item.type === "bagel" || item.type === "sandwich" || item.type === "wrap" || item.type === "bagelButterCombo" || item.type === "bagelCreamCombo" || item.type === "wrapCombo") {
+        if(item.type === "sandwich" && !("addOns" in item)){
+          return;
+        }
 
+        let editedAddOns = []
+        if ('addOns' in item) {
+          item.addOns.forEach(addOn => {
+            editedAddOns.push(addOn.name);
+          });
+        }
+        if (editedAddOns.length === 0) {
+          let editedItem = {
+            name: item.name
+          }
+          items.push(editedItem)
+        } else {
+          let editedItem = {
+            name: item.name,
+            addOns: editedAddOns
+          }
+          items.push(editedItem);
+        }
+      }
     })
+
+    if (items.length > 0) {
+      firebase
+        .firestore()
+        .collection('bagel-station')
+        .doc()
+        .set({
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          isActive: true,
+          items: items
+        })
+    }
 
     //if(items.length === 0) don't do anything
   }
@@ -220,7 +255,6 @@ function SubmitCheck(props) {
         <DialogTitle id="form-dialog-title">Enter Password</DialogTitle>
         <DialogContent>
           <TextField
-            autoFocus
             margin="dense"
             id="password"
             label="Password"

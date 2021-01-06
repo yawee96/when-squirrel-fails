@@ -1,10 +1,135 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Grid, IconButton, Paper } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+import firebase from "firebase/app"
 
 function BagelStation() {
 
+  const [bagelStationItems, setBagelStationItems] = useState(null)
+
+  useEffect(() => {
+    async function fetchData() {
+      await firebase
+        .firestore()
+        .collection('bagel-station')
+        .orderBy('timestamp', 'asc')
+        .onSnapshot(serverUpdate => {
+          const bagelStationItems = serverUpdate.docs.filter(_doc => {
+            if (_doc.data().isActive) {
+              return true;
+            }
+            return false;
+          }).map(_doc => {
+            // if (_doc.data().isActive) {
+            //   console.log("Bar Station _doc: ", _doc)
+            //   const data = _doc.data();
+            //   data['id'] = _doc.id;
+            //   console.log("Bar Station data: ", data)
+            //   return data;
+            // }
+            // return;
+            // console.log("Bar Station _doc: ", _doc)
+            const data = _doc.data();
+            data['id'] = _doc.id;
+            // console.log("Bar Station data: ", data)
+            return data;
+          });
+          // console.log("DRINKS FROM BAR STATION: ", drinks);
+          setBagelStationItems({ bagelStationItems: bagelStationItems })
+        })
+    }
+    fetchData();
+  }, [])
+
+  //   useEffect(() => {
+  //   async function fetchData() {
+  //     await firebase
+  //       .firestore()
+  //       .collection('bar-station')
+  //       .orderBy('timestamp', 'desc')
+  //       .onSnapshot(serverUpdate => {
+  //         const drinks = serverUpdate.docs.map(_doc => {
+  //           // if (_doc.data().isActive) {
+  //           //   console.log("Bar Station _doc: ", _doc)
+  //           //   const data = _doc.data();
+  //           //   data['id'] = _doc.id;
+  //           //   console.log("Bar Station data: ", data)
+  //           //   return data;
+  //           // }
+  //           // return;
+  //           console.log("Bar Station _doc: ", _doc)
+  //           const data = _doc.data();
+  //           data['id'] = _doc.id;
+  //           console.log("Bar Station data: ", data)
+  //           return data;
+  //         });
+  //         console.log("DRINKS FROM BAR STATION: ", drinks);
+  //         setDrinks({ drinks: drinks })
+  //       })
+  //   }
+  //   fetchData();
+  // }, [])
+
+  const showAddOns = (item) => {
+    if ("addOns" in item) {
+      return (
+        <ul>{
+          item.addOns.map((addOn, index) => {
+            return <li key={index}>{addOn}</li>
+          })
+        }</ul>
+      )
+    }
+  }
+
+  const removeCheckHandler = (id) => {
+    console.log("REMOVE CHECK HANDLER: ", id);
+    firebase
+      .firestore()
+      .collection('bagel-station')
+      .doc(id)
+      .update({
+        isActive: false
+      })
+  }
+
+  const showBagelStationItems = () => {
+    if (bagelStationItems === null) {
+      return null;
+    }
+    else {
+      return bagelStationItems.bagelStationItems.map((bagelStationItem, index) => {
+        return (
+          <Grid item xs={2}>
+            <Paper key={index}>
+              <IconButton edge="end" onClick={() => { removeCheckHandler(bagelStationItem.id) }}>
+                <DeleteIcon />
+              </IconButton>
+              <h4 style={{display: "inline-block", float: "right", marginRight: "5px"}}><span>{JSON.stringify(bagelStationItem.timestamp.toDate().getHours())}:</span><span>{JSON.stringify(bagelStationItem.timestamp.toDate().getMinutes())}:</span><span>{JSON.stringify(bagelStationItem.timestamp.toDate().getSeconds())}</span></h4>
+              {bagelStationItem.items.map((item, index) => {
+                return (
+                  <div>
+                    <h4 style={{color: "#00c400", marginLeft: "10px"}} key={index}>{item.name}</h4>
+                    {
+                      showAddOns(item)
+                    }
+                  </div>)
+              })}</Paper>
+          </Grid>
+        )
+      })
+    }
+  }
+
+
   return (
     <div>
-      <h1>Bagel Station</h1>
+      <h2>Bagel Station</h2>
+      <p>Older --------&#62; Newer</p>
+      <Grid container spacing={2}>
+        {showBagelStationItems()}
+      </Grid>
     </div>
   )
 }

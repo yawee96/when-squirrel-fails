@@ -110,7 +110,7 @@ function Check(props) {
           else if (item.type === "bagelCreamCombo") {
             setOpenEditBagelCreamComboDialog(true);
           }
-          else if (item.type === "bagelWrapCombo") {
+          else if (item.type === "wrapCombo") {
             setOpenEditBagelWrapComboDialog(true);
           }
         }}

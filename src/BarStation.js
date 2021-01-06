@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, IconButton, makeStyles, Paper } from '@material-ui/core';
+import { Grid, IconButton, Paper } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import firebase from "firebase/app"
@@ -13,7 +13,7 @@ function BarStation() {
       await firebase
         .firestore()
         .collection('bar-station')
-        .orderBy('timestamp', 'desc')
+        .orderBy('timestamp', 'asc')
         .onSnapshot(serverUpdate => {
           const drinks = serverUpdate.docs.filter(_doc => {
             if (_doc.data().isActive) {
@@ -29,13 +29,13 @@ function BarStation() {
             //   return data;
             // }
             // return;
-            console.log("Bar Station _doc: ", _doc)
+            // console.log("Bar Station _doc: ", _doc)
             const data = _doc.data();
             data['id'] = _doc.id;
-            console.log("Bar Station data: ", data)
+            // console.log("Bar Station data: ", data)
             return data;
           });
-          console.log("DRINKS FROM BAR STATION: ", drinks);
+          // console.log("DRINKS FROM BAR STATION: ", drinks);
           setDrinks({ drinks: drinks })
         })
     }
@@ -76,7 +76,7 @@ function BarStation() {
       return (
         <ul>{
           item.addOns.map((addOn, index) => {
-            return <li>{addOn}</li>
+            return <li key={index}>{addOn}</li>
           })
         }</ul>
       )
@@ -106,10 +106,11 @@ function BarStation() {
               <IconButton edge="end" onClick={() => { removeCheckHandler(drink.id) }}>
                 <DeleteIcon />
               </IconButton>
+              <h4 style={{display: "inline-block", float: "right", marginRight: "5px"}}><span>{JSON.stringify(drink.timestamp.toDate().getHours())}:</span><span>{JSON.stringify(drink.timestamp.toDate().getMinutes())}:</span><span>{JSON.stringify(drink.timestamp.toDate().getSeconds())}</span></h4>
               {drink.items.map((item, index) => {
                 return (
                   <div>
-                    <h4 style={{color: "#00c400"}} key={index}>{item.name}</h4>
+                    <h4 style={{color: "#00c400", marginLeft: "10px"}} key={index}>{item.name}</h4>
                     {
                       showAddOns(item)
                     }
@@ -124,7 +125,8 @@ function BarStation() {
 
   return (
     <div>
-      <h1>Bar Station</h1>
+      <h2>Bar Station</h2>
+      <p>Older --------&#62; Newer</p>
       <Grid container spacing={2}>
         {showDrinks()}
       </Grid>
