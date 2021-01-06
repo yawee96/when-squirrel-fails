@@ -10,7 +10,7 @@ import firebase from "firebase/app"
 require('firebase/firestore');
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDOag9-fh0Rky0NdiWyjPR1jeLe2YLgjpE",
+  apiKey: REACT_APP_FIREBASE_API_KEY,
   authDomain: "bluechip-pos.firebaseapp.com",
   projectId: "bluechip-pos",
   storageBucket: "bluechip-pos.appspot.com",
