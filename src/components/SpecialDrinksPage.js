@@ -99,6 +99,21 @@ function SpecialDrinksPage(props) {
           </Button>
         </Grid>
         <Grid item xs={2}>
+          <Button fullWidth  variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Hot Chocolate", price: 3.62, type: "drink" })}>
+            12oz Hot Choco
+          </Button>
+        </Grid>
+        <Grid item xs={2}>
+          <Button fullWidth  variant="contained"  onClick={() => sendItemToAppHandler({ name: "16oz Hot Chocolate", price: 4.67, type: "drink" })}>
+            16oz Hot Choco
+          </Button>
+        </Grid>
+        <Grid item xs={2}>
+          <Button fullWidth  variant="contained"  onClick={() => sendItemToAppHandler({ name: "20oz Hot Chocolate", price: 4.99, type: "drink" })}>
+            20oz Hot Choco
+          </Button>
+        </Grid>
+        <Grid item xs={2}>
           <Button fullWidth className={classes.steamedMilk} variant="contained"  onClick={() => sendItemToAppHandler({ name: "12oz Steamed Milk", price: 2.63, type: "drink" })}>
             12oz S. Milk
           </Button>
